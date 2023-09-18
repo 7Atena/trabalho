@@ -1,5 +1,7 @@
 package br.com.open.ai.cecg.OpenAI.http.impl;
 
+import br.com.open.ai.cecg.OpenAI.http.data.request.BestHorrorBooksForYouRequestDTO;
+import br.com.open.ai.cecg.OpenAI.http.data.request.BestHorrorBooksRequestDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,5 +22,20 @@ public record OpenAIControllerImpl(CallOpenAiService service) implements OpenAIC
     @ResponseStatus(HttpStatus.OK)
     public String generateScienceFiction(@RequestBody ScienceFictionRequestDTO requestDTO) {
         return service.generateScienceFiction(requestDTO);
+    }
+
+    @Override
+    @PostMapping(value = "/best-horror-books")
+    @ResponseStatus(HttpStatus.OK)
+    public String generateBestHorrorBooks(@RequestBody BestHorrorBooksRequestDTO requestDTO) {
+        return service.generateBestHorrorBooks(requestDTO);
+
+    }
+
+    @Override
+    @PostMapping(value = "/best-horror-books")
+    @ResponseStatus(HttpStatus.OK)
+    public String generateBestHorrorBooksForYou(@RequestBody BestHorrorBooksForYouRequestDTO requestDTO) {
+        return service.generateBestHorrorBooksForYou(requestDTO);
     }
 }
